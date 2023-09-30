@@ -1,10 +1,13 @@
-import React from 'react'
 import './Sidebar.scss'
-
 import {  ExpandMore, Add, Mic, Headphones, Settings } from '@mui/icons-material/';
 import SidebarChannel from './SidebarChannel';
+import { auth } from '../../firebase';
+import { useAppSelector } from '../../app/hooks';
 
 const Sidebar = () => {
+
+  const user = useAppSelector((state) => state.user);
+
   return (
     <div className='sidebar'>
       {/* sidebar Left */}
@@ -42,10 +45,10 @@ const Sidebar = () => {
 
         <div className='sidebarFooter'>
           <div className='sidebarAccount'>
-            <img src="./logo192.png" alt="" />
+            <img src={user?.photo} alt=""  onClick={() => auth.signOut()}/>
             <div className='accountName'>
-              <h4>엄준식</h4>
-              <span>#8172</span>
+              <h4>{user?.displayName}</h4>
+              <span>#{user?.uid.substring(0, 4)}</span>
             </div>
           </div>
 
