@@ -1,0 +1,66 @@
+.sidebar {
+  display: flex;
+  // 35%의 공간을 사용하겠다는 의미
+  flex: 0.35;
+  height: 100vh;
+  background-color: #36393E; // TODO: 나중에 홈으로 이동
+
+  .sidebarLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #202225;
+    padding: 7px 15px;
+
+      .serverIcon {
+        width: 60px;
+        height: 60px;
+        background-color: #36393E;
+        border-radius: 9999px;
+        margin-bottom: 10px;
+        position: relative;
+        margin-top: 7px;
+        img {
+          width: 50px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+  }
+
+  .sidebarRight {
+    background-color: #2E3136;
+    width: 300px;
+
+    .sidebarTop {
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    .sidebarChannels {
+      padding: 13px;
+      
+      .sidebarChannelsHeader {
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 5px;
+
+        .sidebarHeader {
+          display: flex;
+        }
+
+        .sidebarAddIcon {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
