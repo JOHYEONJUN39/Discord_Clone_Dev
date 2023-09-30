@@ -3,12 +3,15 @@ import './Chat.scss'
 import { ChatHeader } from './ChatHeader'
 import { AddCircleOutline, CardGiftcard, Gif, EmojiEmotions } from '@mui/icons-material/';
 import ChatMessage from './ChatMessage';
+import { useAppSelector } from '../../app/hooks';
 
 export default function Chat() {
+  const channelName = useAppSelector((state) => state.channel.channelName)
+  
   return (
     <div className='chat'>
       {/* chat header */}
-      <ChatHeader />
+      <ChatHeader channelName={channelName}/>
       {/* chat messages */}
       <div className='chatMessage'>
         <ChatMessage />
