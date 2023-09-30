@@ -25,3 +25,4 @@ export const userSlice = createSlice({
 // console.log(userSlice);
 
 export default userSlice.reducer;
+export const { login, logout } = userSlice.actions;
