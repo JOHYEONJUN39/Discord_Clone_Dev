@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../features/userSlice";
+import channelReducer from "../features/channelSlice";
 
 // store를 생성하는 configureStore 함수를 사용하여 store를 생성
 export const store = configureStore({
-  reducer: userReducer,
+  reducer: {
+    user: userReducer,
+    channel: channelReducer,
+  },
 });
 
 // useDispatch를 사용하기 위해 타입을 정의
