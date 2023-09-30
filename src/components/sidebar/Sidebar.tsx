@@ -1,7 +1,7 @@
 import React from 'react'
 import './Sidebar.scss'
 
-import {  ExpandMore, Add } from '@mui/icons-material/';
+import {  ExpandMore, Add, Mic, Headphones, Settings } from '@mui/icons-material/';
 import SidebarChannel from './SidebarChannel';
 
 const Sidebar = () => {
@@ -28,7 +28,7 @@ const Sidebar = () => {
           <div className='sidebarChannelsHeader'>
             <div className='sidebarHeader'>
               <ExpandMore />
-              <h4>프로그래밍 채널</h4>
+              <h4>プログラミングチャンネル</h4>
             </div>
             <Add className='sidebarAddIcon' />
           </div>
@@ -37,6 +37,22 @@ const Sidebar = () => {
             <SidebarChannel />
             <SidebarChannel />
             <SidebarChannel />
+          </div>
+        </div>
+
+        <div className='sidebarFooter'>
+          <div className='sidebarAccount'>
+            <img src="./logo192.png" alt="" />
+            <div className='accountName'>
+              <h4>엄준식</h4>
+              <span>#8172</span>
+            </div>
+          </div>
+
+          <div className='sidebarVoice'>
+            <Mic />
+            <Headphones />
+            <Settings />
           </div>
         </div>
       </div>
