@@ -1,9 +1,9 @@
 .sidebar {
   display: flex;
   // 35%의 공간을 사용하겠다는 의미
-  flex: 0.35;
+  flex: 0.3;
   height: 100vh;
-  background-color: #36393E; // TODO: 나중에 홈으로 이동
+  // background-color: #36393E; // TODO: 나중에 홈으로 이동
 
   .sidebarLeft {
     display: flex;
@@ -35,6 +35,7 @@
     background-color: #2E3136;
     width: 300px;
     position: relative;
+    flex-grow: 1;
 
     .sidebarTop {
       color: #fff;
