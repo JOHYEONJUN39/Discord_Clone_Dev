@@ -1,13 +1,25 @@
 import './Sidebar.scss'
 import {  ExpandMore, Add, Mic, Headphones, Settings } from '@mui/icons-material/';
 import SidebarChannel from './SidebarChannel';
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
 import { useAppSelector } from '../../app/hooks';
 import useCollection from '../hooks/useCollection';
+import { addDoc, collection } from 'firebase/firestore';
 
 const Sidebar = () => {
-  const user = useAppSelector((state) => state.user);
+  const user = useAppSelector((state) => state.user.user);
   const { documents: channels } = useCollection('channels');
+
+  const addChannel = async () => {
+    let channelName: string | null = prompt("新しいチャンネルを作成します。");
+    // channelName이 존재하면 firebase db에 채널 추가
+    if(channelName) {
+      // collection의 "channels"에 새로운 document를 추가
+      await addDoc(collection(db, "channels"), {
+        channelName: channelName,
+      });
+    }
+  }
 
   return (
     <div className='sidebar'>
@@ -34,7 +46,7 @@ const Sidebar = () => {
               <ExpandMore />
               <h4>プログラミングチャンネル</h4>
             </div>
-            <Add className='sidebarAddIcon' />
+            <Add className='sidebarAddIcon' onClick={() => addChannel()} />
           </div>
 
           <div className='sidebarChannelList'>
