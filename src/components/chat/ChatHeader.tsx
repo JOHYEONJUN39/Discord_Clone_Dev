@@ -2,13 +2,18 @@ import React from 'react'
 import './ChatHeader.scss'
 import { Notifications, PushPin, People, Search, Send, Help } from '@mui/icons-material/';
 
-export const ChatHeader = () => {
+type Props = {
+  channelName: string | null;
+}
+
+export const ChatHeader = (props: Props) => {
+  const { channelName } = props;
   return (
     <div className='chatHeader'>
       <div className='chatHeaderLeft'>
         <h3>
           <span className='chatHeaderHash'>#</span>
-          Udemy
+          {channelName}
         </h3>
       </div>
 
