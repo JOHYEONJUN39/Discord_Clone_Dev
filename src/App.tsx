@@ -11,7 +11,7 @@ import { ErrorFallback } from './utils/ErrorFallBack';
 
 function App() {
 
-  const user = useAppSelector((state : any) => state.user);
+  const user = useAppSelector((state : any) => state.user.user);
 
   const dispatch = useAppDispatch();
 
