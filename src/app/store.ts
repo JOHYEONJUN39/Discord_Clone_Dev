@@ -5,3 +5,9 @@ import userReducer from "../features/userSlice";
 export const store = configureStore({
   reducer: userReducer,
 });
+
+// useDispatch를 사용하기 위해 타입을 정의
+export type AppDispatch = typeof store.dispatch;
+// useSelector를 사용하기 위해 타입을 정의
+// 현재의 상태를 가져오기 위해 RootState 타입을 정의
+export type RootState = ReturnType<typeof store.getState>;
