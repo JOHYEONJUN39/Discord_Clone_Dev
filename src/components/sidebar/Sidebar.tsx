@@ -3,10 +3,12 @@ import {  ExpandMore, Add, Mic, Headphones, Settings } from '@mui/icons-material
 import SidebarChannel from './SidebarChannel';
 import { auth, db } from '../../firebase';
 import { useAppSelector } from '../../app/hooks';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { onSnapshot, collection, query } from 'firebase/firestore';
+import { Channel } from '../../types/Channel.interface';
 
 const Sidebar = () => {
+  const [channels, setChannels] = useState<Channel[]>([]);
 
   const user = useAppSelector((state) => state.user);
 
@@ -14,8 +16,12 @@ const Sidebar = () => {
 
   useEffect(() => {
     onSnapshot(q, (querySnapshot) => {
-      const channelsResults = [];
-      querySnapshot.docs.forEach((doc) => console.log(doc));
+      const channelsResults: Channel[] = [];
+      querySnapshot.docs.forEach((doc) => channelsResults.push({
+        id: doc.id,
+        channel: doc.data(),
+      }));
+      setChannels(channelsResults);
     })
   }, [])
 
@@ -48,9 +54,9 @@ const Sidebar = () => {
           </div>
 
           <div className='sidebarChannelList'>
-            <SidebarChannel />
-            <SidebarChannel />
-            <SidebarChannel />
+            {channels.map((channel) => (
+              <SidebarChannel key={channel.id} channel={channel} id={channel.id}/>
+            ))}
           </div>
         </div>
 
