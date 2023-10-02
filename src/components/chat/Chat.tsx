@@ -29,6 +29,8 @@ export default function Chat() {
       timestamp: serverTimestamp(),
       user: user,
     });
+    const chatMessage = document.querySelector(".chatMessage");
+    chatMessage?.scrollTo(0, chatMessage.scrollHeight);
     setInputText("");
   }
   const channelName = useAppSelector((state) => state.channel.channelName)
