@@ -36,43 +36,47 @@ export default function Chat() {
   const channelName = useAppSelector((state) => state.channel.channelName)
   
   return (
-    <div className='chat'>
-      {/* chat header */}
-      <ChatHeader channelName={channelName}/>
-      {/* chat messages */}
-      <div className='chatMessage'>
-        {messages.map((message, index) => (
-          <ChatMessage
-            key={index}
-            message={message.message}
-            timestamp={message.timestamp}
-            user={message.user}
-          />
-        ))}
-      </div>
-      {/* chat input */}
-      <div className='chatInput'>
-        <AddCircleOutline />
-        <form action="">
-          <input
-            type="text"
-            placeholder='#Udemyへメッセージを送信'
-            value={inputText}
-            onChange={(e : React.ChangeEvent<HTMLInputElement>) => setInputText(e.target.value)}/>
-          <button
-            type='submit'
-            className='chatInputButton'
-            onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => sendMessage(e)}>
-            送信
-          </button>
-        </form>
+    <>
+      <div className='chat'>
+        {/* chat header */}
+        <ChatHeader channelName={channelName}/>
+        <div className='member'>
+          {/* chat messages */}
+          <div className='chatMessage'>
+            {messages.map((message, index) => (
+              <ChatMessage
+                key={index}
+                message={message.message}
+                timestamp={message.timestamp}
+                user={message.user}
+              />
+            ))}
+          </div>
+        </div>
+        {/* chat input */}
+        <div className='chatInput'>
+          <AddCircleOutline />
+          <form action="">
+            <input
+              type="text"
+              placeholder='メッセージを入力してください...'
+              value={inputText}
+              onChange={(e : React.ChangeEvent<HTMLInputElement>) => setInputText(e.target.value)}/>
+            <button
+              type='submit'
+              className='chatInputButton'
+              onClick={(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => sendMessage(e)}>
+              送信
+            </button>
+          </form>
 
-        <div className='chatInputIcons'>
-          <CardGiftcard />
-          <Gif />
-          <EmojiEmotions />
+          <div className='chatInputIcons'>
+            <CardGiftcard />
+            <Gif />
+            <EmojiEmotions />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
