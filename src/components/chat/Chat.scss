@@ -15,18 +15,13 @@
       flex-grow: 1;
       overflow-y: scroll;
     }
-
-    .sex {
-      width: 200px;
-      height: 100vh;
-      background-color: black;
-
-      .sibal {
-        width: 20px;
-        height: 20px;
-        background-color: white;
-      }
+    .chatMessage::-webkit-scrollbar{
+      display:none;
     }
+  }
+
+  .member::-webkit-scrollbar{
+    display:none;
   }
 
   .chatInput {
